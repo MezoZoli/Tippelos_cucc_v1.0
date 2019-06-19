@@ -11,11 +11,11 @@ def evaluate_v01(home_goals, away_goals, home_guess, away_guess):
         points = points
         print(points)
 
-    if home_goals != home_guess or away_goals != away_guess:
+    elif home_goals != home_guess or away_goals != away_guess:
         points = points-25
         print(points)
 
-    if evaluate == guesses +-1:
+    elif evaluate == guesses +-1:
         points = points-5
         print(points)
 
