@@ -1,101 +1,141 @@
 def evaluate_v01(home_goals, away_goals, home_guess, away_guess):
     evaluate = home_goals + away_goals
     guesses = home_guess + away_guess
-    home_goals = home_goals
-    home_guess = home_guess
-    away_goals = away_goals
-    away_guess = away_guess
     points = 25
     min_points = 17
+    med_points = 20
+
     if evaluate == guesses and home_goals == home_guess and away_goals == away_guess:
         points = points
-        print(points)
+        return points
 
-    elif home_goals != home_guess or away_goals != away_guess:
-        points = points-25
-        print(points)
+    elif evaluate == guesses -1:
+        points = 20
+        return points
 
-    elif evaluate == guesses +-1:
-        points = points-5
-        print(points)
+    elif evaluate == guesses +1:
+        points = 20
+        return points
 
-# ha a tipp több lett:
+    # GÓLHIBÁK
+    # ha a tipp több lett:
 
-    elif evaluate == guesses + 1:
-        min_points = min_points - 2
-        print(min_points)
+    if evaluate == guesses + 1:
+        min_points = min_points - 3
+        return min_points
     elif evaluate == guesses + 2:
-        min_points = min_points - 4
-        print(min_points)
-    elif evaluate == guesses + 3:
         min_points = min_points - 6
-        print(min_points)
+        return min_points
+    elif evaluate == guesses + 3:
+        min_points = min_points - 9
+        return min_points
     elif evaluate == guesses + 4:
-        min_points = min_points - 8
-        print(min_points)
-    elif evaluate == guesses + 5:
-        min_points = min_points - 10
-        print(min_points)
-    elif evaluate == guesses + 6:
         min_points = min_points - 12
-        print(min_points)
-    elif evaluate == guesses + 7:
-        min_points = min_points - 14
-        print(min_points)
-    elif evaluate == guesses + 8:
-        min_points = min_points - 16
-        print(min_points)
-    elif evaluate == guesses + 9:
-        min_points = min_points - 18
-        print(min_points)
-    elif evaluate == guesses + 10:
-        min_points = min_points - 20
-        print(min_points)
-    elif evaluate == guesses + 11:
-        min_points = min_points - 22
-        print(min_points)
-    elif evaluate == guesses + 12:
-        min_points = min_points - 24
-        print(min_points)
+        return min_points
+    elif evaluate == guesses + 5:
+        min_points = min_points - 15
+        return min_points
+    elif evaluate == guesses + 6:
+        min_points = 0
+        return min_points
 
     # ha a tipp kevesebb lett:
 
     elif evaluate == guesses - 1:
-        min_points = min_points - 2
-        print(min_points)
+        min_points = min_points - 3
+        return min_points
     elif evaluate == guesses - 2:
-        min_points = min_points - 4
-        print(min_points)
-    elif evaluate == guesses - 3:
         min_points = min_points - 6
-        print(min_points)
+        return min_points
+    elif evaluate == guesses - 3:
+        min_points = min_points - 9
+        return min_points
     elif evaluate == guesses - 4:
-        min_points = min_points - 8
-        print(min_points)
-    elif evaluate == guesses - 5:
-        min_points = min_points - 10
-        print(min_points)
-    elif evaluate == guesses - 6:
         min_points = min_points - 12
-        print(min_points)
-    elif evaluate == guesses - 7:
-        min_points = min_points - 14
-        print(min_points)
-    elif evaluate == guesses - 8:
-        min_points = min_points - 16
-        print(min_points)
-    elif evaluate == guesses - 9:
-        min_points = min_points - 18
-        print(min_points)
-    elif evaluate == guesses - 10:
-        min_points = min_points - 20
-        print(min_points)
-    elif evaluate == guesses - 11:
-        min_points = min_points - 22
-        print(min_points)
-    elif evaluate == guesses - 12:
-        min_points = min_points - 24
-        print(min_points)
+        return min_points
+    elif evaluate == guesses - 5:
+        min_points = min_points - 15
+        return min_points
+    elif evaluate == guesses - 6:
+        min_points = 0
+        return min_points
+
+    # GÓLKÜLÖMBSÉG HIBÁI
+    # Ha többre tippel
+
+    if home_goals + 1 and away_goals + 1 == home_guess and away_guess:
+        med_points = med_points
+        return med_points
+    elif home_goals + 2 and away_goals + 2 == home_guess and away_guess:
+        med_points = med_points - 2
+        return med_points
+    elif home_goals + 3 and away_goals + 3 == home_guess and away_guess:
+        med_points = med_points - 4
+        return med_points
+    elif home_goals + 4 and away_goals + 4 == home_guess and away_guess:
+        med_points = med_points - 6
+        return med_points
+    elif home_goals + 5 and away_goals + 5 == home_guess and away_guess:
+        med_points = med_points - 8
+        return med_points
+    elif home_goals + 6 and away_goals + 6 == home_guess and away_guess:
+        med_points = med_points - 10
+        return med_points
+    elif home_goals + 7 and away_goals + 7 == home_guess and away_guess:
+        med_points = med_points - 12
+        return med_points
+    elif home_goals + 8 and away_goals + 8 == home_guess and away_guess:
+        med_points = med_points - 14
+        return med_points
+    elif home_goals + 9 and away_goals + 9 == home_guess and away_guess:
+        med_points = med_points - 16
+        return med_points
+    elif home_goals + 10 and away_goals + 10 == home_guess and away_guess:
+        med_points = med_points - 18
+        return med_points
+    elif home_goals + 11 and away_goals + 11 == home_guess and away_guess:
+        med_points = 0
+        return med_points
+
+    # Ha kevesebbre tippel
+
+    if home_goals - 1 and away_goals - 1 == home_guess and away_guess:
+        med_points = med_points
+        return med_points
+    elif home_goals - 2 and away_goals - 2 == home_guess and away_guess:
+        med_points = med_points - 2
+        return med_points
+    elif home_goals - 3 and away_goals - 3 == home_guess and away_guess:
+        med_points = med_points - 4
+        return med_points
+    elif home_goals - 4 and away_goals - 4 == home_guess and away_guess:
+        med_points = med_points - 6
+        return med_points
+    elif home_goals - 5 and away_goals - 5 == home_guess and away_guess:
+        med_points = med_points - 8
+        return med_points
+    elif home_goals - 6 and away_goals - 6 == home_guess and away_guess:
+        med_points = med_points - 10
+        return med_points
+    elif home_goals - 7 and away_goals - 7 == home_guess and away_guess:
+        med_points = med_points - 12
+        return med_points
+    elif home_goals - 8 and away_goals - 8 == home_guess and away_guess:
+        med_points = med_points - 14
+        return med_points
+    elif home_goals - 9 and away_goals - 9 == home_guess and away_guess:
+        med_points = med_points - 16
+        return med_points
+    elif home_goals - 10 and away_goals - 10 == home_guess and away_guess:
+        med_points = med_points - 18
+        return med_points
+    elif home_goals - 11 and away_goals - 11 == home_guess and away_guess:
+        med_points = 0
+        return med_points
+
+    elif home_goals != home_guess or away_goals != away_guess:
+        points = 0
+        return points
 
 
-evaluate_v01(6, 3, 4, 2)
+print(evaluate_v01(3, 3, 2, 2))
