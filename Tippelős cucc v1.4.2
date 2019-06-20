@@ -137,5 +137,84 @@ def evaluate_v01(home_goals, away_goals, home_guess, away_guess):
         points = 0
         return points
 
+    # DÖNTETLEN
+    # Ha többre tippel
+
+    if home_goals == away_goals and home_guess == away_guess and evaluate == guesses:
+        points = points
+        return points
+    elif home_goals == away_goals and home_guess == away_guess and evaluate + 1 == guesses:
+        med_points = med_points
+        return med_points
+    elif home_goals == away_goals and home_guess == away_guess and evaluate + 2 == guesses:
+        med_points = med_points - 2
+        return med_points
+    elif home_goals == away_goals and home_guess == away_guess and evaluate + 3 == guesses:
+        med_points = med_points - 4
+        return med_points
+    elif home_goals == away_goals and home_guess == away_guess and evaluate + 4 == guesses:
+        med_points = med_points - 6
+        return med_points
+    elif home_goals == away_goals and home_guess == away_guess and evaluate + 5 == guesses:
+        med_points = med_points - 8
+        return med_points
+    elif home_goals == away_goals and home_guess == away_guess and evaluate + 6 == guesses:
+        med_points = med_points - 10
+        return med_points
+    elif home_goals == away_goals and home_guess == away_guess and evaluate + 7 == guesses:
+        med_points = med_points - 12
+        return med_points
+    elif home_goals == away_goals and home_guess == away_guess and evaluate + 8 == guesses:
+        med_points = med_points - 14
+        return med_points
+    elif home_goals == away_goals and home_guess == away_guess and evaluate + 9 == guesses:
+        med_points = med_points - 16
+        return med_points
+    elif home_goals == away_goals and home_guess == away_guess and evaluate + 10 == guesses:
+        med_points = med_points - 18
+        return med_points
+    elif home_goals == away_goals and home_guess == away_guess and evaluate + 11 == guesses:
+        med_points = med_points - 20
+        return med_points
+
+    # Ha kevesebbre tippel
+
+    if home_goals == away_goals and home_guess == away_guess and evaluate == guesses:
+        points = points
+        return points
+    elif home_goals == away_goals and home_guess == away_guess and evaluate - 1 == guesses:
+        med_points = med_points
+        return med_points
+    elif home_goals == away_goals and home_guess == away_guess and evaluate - 2 == guesses:
+        med_points = med_points - 2
+        return med_points
+    elif home_goals == away_goals and home_guess == away_guess and evaluate - 3 == guesses:
+        med_points = med_points - 4
+        return med_points
+    elif home_goals == away_goals and home_guess == away_guess and evaluate - 4 == guesses:
+        med_points = med_points - 6
+        return med_points
+    elif home_goals == away_goals and home_guess == away_guess and evaluate - 5 == guesses:
+        med_points = med_points - 8
+        return med_points
+    elif home_goals == away_goals and home_guess == away_guess and evaluate - 6 == guesses:
+        med_points = med_points - 10
+        return med_points
+    elif home_goals == away_goals and home_guess == away_guess and evaluate - 7 == guesses:
+        med_points = med_points - 12
+        return med_points
+    elif home_goals == away_goals and home_guess == away_guess and evaluate - 8 == guesses:
+        med_points = med_points - 14
+        return med_points
+    elif home_goals == away_goals and home_guess == away_guess and evaluate - 9 == guesses:
+        med_points = med_points - 16
+        return med_points
+    elif home_goals == away_goals and home_guess == away_guess and evaluate - 10 == guesses:
+        med_points = med_points - 18
+        return med_points
+    elif home_goals == away_goals and home_guess == away_guess and evaluate - 11 == guesses:
+        med_points = med_points - 20
+        return med_points
+
 
 print(evaluate_v01(3, 3, 2, 2))
