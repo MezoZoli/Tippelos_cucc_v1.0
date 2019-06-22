@@ -1,29 +1,29 @@
 def evaluate_v01(home_goals, away_goals, home_guess, away_guess):
-    evaluate = home_goals + away_goals
+    evaluate = home_goals + away_goals # ezeket az osszegeket tenyleg el kene felejteni, mert csak rossz eredmenyre vezetnek 
     guesses = home_guess + away_guess
     points = 25
     min_points = 17
     med_points = 20
 
-    if evaluate == guesses and home_goals == home_guess and away_goals == away_guess:
+    if evaluate == guesses and home_goals == home_guess and away_goals == away_guess: # az elso feltetel felesleges, mert teljesul ha a masik ketto teljesul
         points = points
         return points
 
-    elif evaluate == guesses -1:
+    elif evaluate == guesses -1: #2-2 tipp, 2-1 eredmeny, nem jarna pont, itt ad 20-at
         points = 20
         return points
 
-    elif evaluate == guesses +1:
+    elif evaluate == guesses +1: #ugyanez csak forditva
         points = 20
         return points
 
     # GÓLHIBÁK
     # ha a tipp több lett:
 
-    if evaluate == guesses + 1:
+    if evaluate == guesses + 1: # ez az if soha nem fut le, mert ha a tippek osszege 1-el kevesebb mint a goloke, akkor a 16 sor igaz es a fv kilep a 18. sorban
         min_points = min_points - 3
         return min_points
-    elif evaluate == guesses + 2:
+    elif evaluate == guesses + 2: # 2-2 eredmeny: ez az if aktiv 2-0-s, 1-1-es es 0-2-s tipp eseten is. Ebbol csak az 1-1 esetne jar pont, es akkor sem ennyi.
         min_points = min_points - 6
         return min_points
     elif evaluate == guesses + 3:
@@ -41,7 +41,7 @@ def evaluate_v01(home_goals, away_goals, home_guess, away_guess):
 
     # ha a tipp kevesebb lett:
 
-    elif evaluate == guesses - 1:
+    elif evaluate == guesses - 1: # ugyanazok a hibak ervenyesek itt is
         min_points = min_points - 3
         return min_points
     elif evaluate == guesses - 2:
@@ -63,7 +63,7 @@ def evaluate_v01(home_goals, away_goals, home_guess, away_guess):
     # GÓLKÜLÖMBSÉG HIBÁI
     # Ha többre tippel
 
-    if home_goals + 1 == home_guess and away_goals + 1 == away_guess:
+    if home_goals + 1 == home_guess and away_goals + 1 == away_guess: # na ez mar jo
         med_points = med_points
         return med_points
     elif home_goals + 2 == home_guess and away_goals + 2 == away_guess:
@@ -99,7 +99,7 @@ def evaluate_v01(home_goals, away_goals, home_guess, away_guess):
 
     # Ha kevesebbre tippel
 
-    if home_goals - 1 == home_guess and away_goals - 1 == away_guess:
+    if home_goals - 1 == home_guess and away_goals - 1 == away_guess: #es ez is
         med_points = med_points
         return med_points
     elif home_goals - 2 == home_guess and away_goals - 2 == away_guess:
@@ -136,10 +136,10 @@ def evaluate_v01(home_goals, away_goals, home_guess, away_guess):
     # DÖNTETLEN
     # Ha többre tippel
 
-    if home_goals == away_goals and home_guess == away_guess and evaluate == guesses:
+    if home_goals == away_goals and home_guess == away_guess and evaluate == guesses: #ez mar szerepel fentebb
         points = points
         return points
-    elif home_goals == away_goals and home_guess == away_guess and evaluate + 2 == guesses:
+    elif home_goals == away_goals and home_guess == away_guess and evaluate + 2 == guesses: # soha nem igaz, a tobbi sem
         med_points = med_points - 2
         return med_points
     elif home_goals == away_goals and home_guess == away_guess and evaluate + 4 == guesses:
@@ -157,7 +157,7 @@ def evaluate_v01(home_goals, away_goals, home_guess, away_guess):
 
     # Ha kevesebbre tippel
 
-    if home_goals == away_goals and home_guess == away_guess and evaluate == guesses:
+    if home_goals == away_goals and home_guess == away_guess and evaluate == guesses: #ugyanugy
         points = points
         return points
     elif home_goals == away_goals and home_guess == away_guess and evaluate - 2 == guesses:
@@ -177,8 +177,10 @@ def evaluate_v01(home_goals, away_goals, home_guess, away_guess):
         return med_points
 
     # GÓLKÜLÖMBSÉGTELEN HIBÁK
+    # ezzel meg van egy gond: ha 2-1 helyett 3-0-t tippeltek, akkor az ugye 14 pont, viszont mivel az elso if csak azt nezi hogy az egyik teves, csak az egyik hibat szamolja
     
-    if home_goals - home_guess or away_goals - away_guess == 1 or -1:
+    if home_goals - home_guess or away_goals - away_guess == 1 or -1: #ez igy megint hibas if syntax, amit akarsz az valojaban 4 feltetel:
+    # if abs(home_goals - home_guess) == 1 or abs(away_goals - away_guess): #abszolutertekkel csak 2
         min_points = min_points
         return min_points
     elif home_goals - home_guess or away_goals - away_guess == 2 or -2:
